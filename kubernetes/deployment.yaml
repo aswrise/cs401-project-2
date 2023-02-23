@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: recommender-app-v14
+  name: recommender-app-v15
 spec:
   replicas: 4
   selector:
