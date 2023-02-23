@@ -22,7 +22,7 @@ def test_api():
         ]
     }
 
-    for i in range(0, 400):
+    for i in range(0, 1000):
         try:
             response = requests.post(url, json=payload, timeout=0.2)
             response_json = response.json()
@@ -33,7 +33,7 @@ def test_api():
 
         timestamp = time.strftime("%Y-%m-%d %H:%M:%S")
         with open('test1.log', 'a') as f:
-            f.write(f"[{i+1}/200] {timestamp} {response_json}\n")
+            f.write(f"[{i+1}/1000] {timestamp} {response_json}\n")
 
         time.sleep(0.1)
 
