@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: recommender-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: recommender-app
+  template:
+    metadata:
+      labels:
+        app: recommender-app
+    spec:
+      containers:
+      - name: mlearning-docker
+        image: aquasw/app:latest
+        imagePullPolicy: Always
+        volumeMounts:
+          - mountPath: /data
+            name: aqua
+        ports:
+        - containerPort: 30505
+        resources:
+          limits:
+            cpu: 100m
+            memory: 1Gi
+      restartPolicy: Always
+      volumes:
+        - name: aqua 
+          persistentVolumeClaim:
+            claimName: recommender-pvc

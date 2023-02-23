@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: recommender-ml
+  labels:
+    name: recommender-ml
+spec:
+  containers:
+  - name: recommender-ml
+    image: aquasw/ml:latest
+    resources:
+      limits:
+        memory: "1Gi"
+        cpu: "500m"
+    volumeMounts:
+      - mountPath: /data
+        name: aqua
+  restartPolicy: OnFailure
+  volumes:
+    - name: aqua 
+      persistentVolumeClaim:
+        claimName: recommender-pvc
