@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: recommender-app-v17
+  name: recommender-app-v18
 spec:
-  replicas: 4
+  replicas: 5
   selector:
     matchLabels:
       app: recommender-app
