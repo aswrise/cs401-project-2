@@ -57,8 +57,7 @@ def json_example():
     return jsonify(
         tracklist=list(set(recommend)),
         version=os.environ['VERSION'],
-        model_date= time,
-        are_youhappy="yes"
+        model_date= time
 
         # version=g.user.email,
         # model_date=g.user.id,
