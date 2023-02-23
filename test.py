@@ -1,39 +1,42 @@
-import os
 import time
 import requests
+import logging
+
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s [%(levelname)s] %(message)s'
+)
 
 with open('test1.log', 'w') as f:
     f.write('')
 
-
 def test_api():
-    print("---- test started ----")
+    logging.info("---- test started ----")
     url = "http://10.102.148.193:30505/api/recommend"
-    print('url: ', url)
+    logging.info(f'url: {url}')
 
     payload = {
         'songs': [
             "1985",
-            "All The Small Things"
+            "Starboy"
         ]
     }
 
-    for i in range(0, 200):
+    for i in range(0, 400):
         try:
-            response = requests.post(url, json=payload, timeout=1.5)
-            # print(response)
+            response = requests.post(url, json=payload, timeout=0.2)
             response_json = response.json()
-        except:
+            logging.info(f"[{i+1}/200] {response_json}")
+        except Exception as e:
+            logging.error(f"[{i+1}/200] Failed to send request: {e}")
             response_json = "SERVICE_OFFLINE"
 
-        print("[", i+1, " / 200 ]",
-              time.strftime("%Y-%m-%d %H:%M:%S"), response_json)
-
+        timestamp = time.strftime("%Y-%m-%d %H:%M:%S")
         with open('test1.log', 'a') as f:
-            f.write("[" + str(i+1) + " / 200 ] " +
-                    time.strftime("%Y-%m-%d %H:%M:%S") + " " + str(response_json) + '\n')
-        time.sleep(0.1)
+            f.write(f"[{i+1}/200] {timestamp} {response_json}\n")
 
+        time.sleep(0.1)
 
 if __name__ == "__main__":
     test_api()
+
