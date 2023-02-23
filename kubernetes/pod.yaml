@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: recommender-ml-v21
+  name: recommender-ml-v22
   labels:
     name: recommender-ml
 spec:
