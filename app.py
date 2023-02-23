@@ -34,7 +34,6 @@ def json_example():
     time = app.model[1]
     n =len(rules["antecedents"])
     for i in range(n):
-        # print(type(rules["antecedents"][i]))
         rules["antecedents"][i]=list(rules ["antecedents"][i])
         rules["consequents"][i]=list(rules ["consequents"][i])
     for i in range(n):
