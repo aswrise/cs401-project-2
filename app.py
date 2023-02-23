@@ -19,6 +19,7 @@ load_model()
 
 @app.route('/api/recommend', methods=['POST'])
 def json_example():
+    load_model()
     request_data = request.get_json(force=True)
 
     songs = None
