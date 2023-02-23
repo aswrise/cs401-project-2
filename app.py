@@ -45,7 +45,8 @@ def json_example():
                 break
         if a == False:
             for j in rules["consequents"][i]:
-                recommend.append(j)
+                if j not in songs:
+                    recommend.append(j)
     # tracklist = list(set(recommend))
     # version = "version: 0.0.1"
     # model_date = time
