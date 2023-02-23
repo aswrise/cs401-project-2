@@ -32,7 +32,7 @@ def test_api():
             response_json = "SERVICE_OFFLINE"
 
         timestamp = time.strftime("%Y-%m-%d %H:%M:%S")
-        with open('test2.log', 'a') as f:
+        with open('test1.log', 'a') as f:
             f.write(f"[{i+1}/2000] {timestamp} {response_json}\n")
 
         time.sleep(0.1)
