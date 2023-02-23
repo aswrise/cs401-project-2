@@ -1,6 +1,7 @@
 # !pip install mlxtend
 
 import pickle
+import os
 from flask import Flask, jsonify, request
 app = Flask(__name__)
 
@@ -54,7 +55,7 @@ def json_example():
     # model_date = time
     return jsonify(
         tracklist=list(set(recommend)),
-        version="0.0.1",
+        version=os.environ['VERSION'],
         model_date= time
 
         # version=g.user.email,
