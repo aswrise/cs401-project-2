@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: recommender-app-v6
+  name: recommender-app-v7
 spec:
   replicas: 5
   selector:
@@ -23,7 +23,7 @@ spec:
         - containerPort: 30505
         resources:
           limits:
-            cpu: 100m
+            cpu: 500m
             memory: 1Gi
       restartPolicy: Always
       volumes:
